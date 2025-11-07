@@ -59,9 +59,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 :root {
-  --color-primary: #FF014F;
-  --color-primary-alt: #ff014dd9;
-  --color-primary-2nd: #FF494A;
+  --color-primary: #07d370;
+  --color-primary-alt: #07d370;
+  --color-primary-2nd: #07d370;
   --color-primary-3rd: #FDC448;
   --color-primary-4th: #0071ff;
   --color-secondary: #060606;
@@ -27320,4 +27320,16 @@ body.tmp-white-version.color-primary-3rd .services-widget.v2 .active-bg {
 .active-light.demo-modal-area .wrapper .tmp-modal-inner .demo-top .subtitle {
   color: #3d3d3d !important;
 }
-/*# sourceMappingURL=../maps/style.css.map */
+
+
+.about-btn .tmp-btn .btn-text {
+  color: #111 !important; /* Schwarz statt Weiß */
+}
+
+.about-btn .tmp-btn .btn-icon i {
+  color: #e63946; /* Icon in Reeni-Rot */
+}
+
+.simple-list span::before {
+  content: "▸ ";   /* Symbol nach Wunsch: "•", "–", "→", "▹" … */
+}
