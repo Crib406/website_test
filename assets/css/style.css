@@ -27399,3 +27399,43 @@ br.desktop-only {
   color: #c23a2b; /* E-Mail-Rot, z. B. Gmail-Ton */
 
 
+  /* Liste ohne Standard-Bullets */
+.about-content-area.about-list .about-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Icon + Text schön nebeneinander, mehrere Zeilen bündig */
+.about-content-area.about-list .about-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* grünes Icon im Reeni-Stil */
+.about-content-area.about-list .about-features .icon i {
+  color: var(--tmp-theme-color, #3fd06f);
+  font-size: 1.2em;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Text kann normal vom Theme erben */
+.about-content-area.about-list .about-features .text {
+  font-weight: 600; /* optional, je nach Reeni-Headline */
+}
+
+/* Einrückung mobil */
+.about-content-area.about-list .about-features {
+  margin-left: 60px;
+}
+
+/* Einrückung Desktop */
+@media (min-width: 992px) {
+  .about-content-area.about-list .about-features {
+    margin-left: 120px;
+  }
+}
