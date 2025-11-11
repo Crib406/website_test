@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="shortcut icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/images/favicon.svg">
     <title>{{ title or "Christoph B. Reimann – Generalist & Brückenbauer für den Mittelstand" }}</title>
 
 
@@ -18,9 +18,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ title or 'Christoph B. Reimann – Generalist & Brückenbauer für den Mittelstand' }}" />
     <meta property="og:description" content="{{ description or 'Generalist und Brückenbauer im Mittelstand. Verbindet Betriebswirtschaft, Psychologie und Technik, um Zusammenarbeit, Prozesse und Kultur wirksam zu gestalten.' }}" />
-    <meta property="og:url" content="{{ site.url | default('https://creimann.cc') }}{{ page.url }}" />
+    <meta property="og:url" content="{{ site.url | default('{{ site.baseurl }}') }}{{ page.url }}" />
     <meta property="og:site_name" content="Christoph B. Reimann" />
-    <meta property="og:image" content="{{ site.url | default('https://creimann.cc') }}/images/preview.jpg" />
+    <meta property="og:image" content="{{ site.url | default('{{ site.baseurl }}') }}/images/preview.jpg" />
     <meta property="og:image:alt" content="Portrait von Christoph B. Reimann aus Bad Harzburg" />
 
     <!-- Twitter -->
@@ -37,8 +37,8 @@
     "name": "Christoph B. Reimann",
     "alternateName": ["Christoph Reimann","Christoph Bruno Reimann", "Reimann"],
     "jobTitle": "Generalist · Brückenbauer · Mensch",
-    "url": "https://creimann.cc/",
-    "image": "https://creimann.cc/images/portrait.JPG",
+    "url": "{{ site.baseurl }}",
+    "image": "{{ site.url | default('https://creimann.cc') }}/images/portrait.JPG",
     "description": "Generalist mit Schwerpunkt Unternehmenskultur, Struktur und ehrlicher Zusammenarbeit im Mittelstand. Verbindet Strategie, Führung und Praxis – mit Haltung, Klarheit und Menschlichkeit.",
     "address": {
         "@type": "PostalAddress",
@@ -65,7 +65,7 @@
     "worksFor": {
         "@type": "Organization",
         "name": "Selbstständig tätig, aktuell offen für eine neue Aufgabe im Mittelstand",
-        "url": "https://creimann.cc/"
+        "url": "{{ site.url | default('https://creimann.cc') }}"
     },
     "alumniOf": [
         {
