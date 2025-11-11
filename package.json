@@ -1,0 +1,26 @@
+{
+  "name": "main-reeni-personal-portfolio-bootstrap5-template",
+  "version": "1.0.0",
+  "description": "Persönliche Portfolioseite von Christoph B. Reimann mit Eleventy",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf _site docs",
+    "build": "eleventy",
+    "serve": "eleventy --serve --port=8080 --watch",
+    "test": "echo \"No tests defined\" && exit 0"
+  },
+  "keywords": [
+    "eleventy",
+    "portfolio",
+    "static-site",
+    "bootstrap5"
+  ],
+  "author": "Christoph B. Reimann",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
