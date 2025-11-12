@@ -38,12 +38,13 @@ jobs:
           echo "BASE_PATH=preview/feature/${BRANCH_NAME}" >> $GITHUB_ENV
           echo "📁 BASE_PATH set to: preview/feature/${BRANCH_NAME}"
 
-      - name: Build Eleventy with pathPrefix
-        run: |
-          echo "🔧 Building Eleventy for BASE_PATH=${BASE_PATH}"
-          npx @11ty/eleventy
+      - name: Build Eleventy (into subdirectory)
         env:
           BASE_PATH: ${{ env.BASE_PATH }}
+        run: |
+          echo "🔧 Building Eleventy for BASE_PATH=${BASE_PATH}"
+          # Eleventy schreibt direkt in den korrekten Unterordner:
+          npx @11ty/eleventy --output "_site/${BASE_PATH}" --pathprefix "/${BASE_PATH}/"
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
