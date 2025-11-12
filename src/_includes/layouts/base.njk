@@ -10,6 +10,9 @@
 
     <meta name="description" content="{{ description or 'Generalist und Brückenbauer im Mittelstand. Verbindet Betriebswirtschaft, Psychologie und Technik, um Zusammenarbeit, Prozesse und Kultur wirksam zu gestalten.' }}" />
     <meta name="robots" content="index,follow" />
+    {% if page.url == '/404.html' %}
+    <meta name="robots" content="noindex, nofollow">
+    {% endif %}
     <link rel="canonical" href="{{ site.url | default('https://creimann.cc') }}{{ page.url }}" />
     <link rel="icon" href="/favicon.ico?v={{ build.timestamp }}" type="image/x-icon" />
 
