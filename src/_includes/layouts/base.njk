@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/images/favicon.svg">
+    <link rel="shortcut icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/images/favicon.svg?v={{ build.timestamp }}">
     <title>{{ title or "Christoph B. Reimann – Generalist & Brückenbauer für den Mittelstand aus Bad Harzburg (Harz)" }}</title>
 
 
@@ -13,6 +13,11 @@
     <link rel="canonical" href="{{ site.url | default('https://creimann.cc') }}{{ page.url }}" />
     <link rel="icon" href="/favicon.ico?v={{ build.timestamp }}" type="image/x-icon" />
 
+    <!--Cache deaktivieren-->
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
     <!-- Open Graph -->
     <meta property="og:locale" content="de_DE" />
     <meta property="og:type" content="website" />
@@ -20,14 +25,14 @@
     <meta property="og:description" content="{{ description or 'Generalist und Brückenbauer im Mittelstand. Verbindet Betriebswirtschaft, Psychologie und Technik, um Zusammenarbeit, Prozesse und Kultur wirksam zu gestalten.' }}" />
     <meta property="og:url" content="{{ site.url | default(site.baseurl) }}{{ page.url }}" />
     <meta property="og:site_name" content="Christoph B. Reimann" />
-    <meta property="og:image" content="{{site.url}}/assets/images/about/preview.png" />
+    <meta property="og:image" content="{{site.url}}/assets/images/about/preview.png?v={{ build.timestamp }}" />
     <meta property="og:image:alt" content="Portrait von Christoph B. Reimann aus Bad Harzburg" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ title or 'Christoph B. Reimann – Generalist & Brückenbauer für den Mittelstand' }}" />
     <meta name="twitter:description" content="{{ description or 'Generalist und Brückenbauer im Mittelstand. Verbindet Betriebswirtschaft, Psychologie und Technik, um Zusammenarbeit, Prozesse und Kultur wirksam zu gestalten.' }}" />
-    <meta name="twitter:image" content="{{site.url}}/assets/images/about/preview.png" />
+    <meta name="twitter:image" content="{{site.url}}/assets/images/about/preview.png?v={{ build.timestamp }}" />
 
     <!-- 100% privacy-first analytics -->
 	<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
@@ -42,7 +47,7 @@
     "alternateName": ["Christoph Reimann","Christoph Bruno Reimann", "Reimann"],
     "jobTitle": "Generalist · Brückenbauer · Mensch",
     "url": "{{ site.baseurl }}",
-    "image": "{{site.url}}/assets/images/about/preview.png",
+    "image": "{{site.url}}/assets/images/about/preview.png?v={{ build.timestamp }}",
     "description": "Generalist mit Schwerpunkt Unternehmenskultur, Struktur und ehrlicher Zusammenarbeit im Mittelstand. Verbindet Strategie, Führung und Praxis – mit Haltung, Klarheit und Menschlichkeit.",
     "address": {
         "@type": "PostalAddress",
@@ -142,13 +147,13 @@
 
 
     <!-- Bootstrap min css -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/fontawesome.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/plugins/swiper.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/plugins/odometer.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/animate.min.css">
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/fontawesome.css?v={{ build.timestamp }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/plugins/swiper.css?v={{ build.timestamp }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/plugins/odometer.css?v={{ build.timestamp }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/animate.min.css?v={{ build.timestamp }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/bootstrap.min.css?v={{ build.timestamp }}">
     <!-- custom css -->
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v={{ build.timestamp }}">
 </head>
 
 <body> <!-- class="tmp-white-version" -->
@@ -182,29 +187,29 @@
     -->
 
     <!-- Scripts -->
-    <script src="{{ site.baseurl }}/assets/js/vendor/jquery.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/vendor/jquery-ui.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/vendor/waypoints.min.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/jquery.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/jquery-ui.min.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/waypoints.min.js?v={{ build.timestamp }}"></script>
 
-    <script src="{{ site.baseurl }}/assets/js/plugins/odometer.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/vendor/appear.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/odometer.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/appear.js?v={{ build.timestamp }}"></script>
 
-    <script src="{{ site.baseurl }}/assets/js/vendor/jquery-one-page-nav.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/swiper.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/jquery-one-page-nav.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/swiper.js?v={{ build.timestamp }}"></script>
 
-    <script src="{{ site.baseurl }}/assets/js/plugins/gsap.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/splittext.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/scrolltigger.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/scrolltoplugins.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/smoothscroll.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/gsap.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/splittext.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/scrolltigger.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/scrolltoplugins.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/smoothscroll.js?v={{ build.timestamp }}"></script>
     <!-- bootstrap Js-->
-    <script src="{{ site.baseurl }}/assets/js/vendor/bootstrap.min.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/vendor/waw.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/isotop.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/animation.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/contact.form.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/vendor/backtop.js"></script>
-    <script src="{{ site.baseurl }}/assets/js/plugins/text-type.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/bootstrap.min.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/waw.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/isotop.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/animation.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/contact.form.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/vendor/backtop.js?v={{ build.timestamp }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/plugins/text-type.js?v={{ build.timestamp }}"></script>
     <!-- custom Js -->
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>
