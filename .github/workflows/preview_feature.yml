@@ -19,10 +19,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BASE_PATH: preview/feature/${{ github.ref_name }}
+      BASE_PATH: preview/feature/${{ github.ref_name#feature/ }}
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -33,11 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Eleventy (with base path)
+      - name: Build Eleventy with pathPrefix
+        env:
+          BASE_PATH: ${{ env.BASE_PATH }}
         run: |
-          # Falls du in Eleventy einen basePath brauchst:
-          echo "BASE_PATH=${BASE_PATH}"
-          npx @11ty/eleventy --pathprefix "/${BASE_PATH}/"
+          echo "🔧 Building Eleventy for BASE_PATH=${BASE_PATH}"
+          npx @11ty/eleventy
 
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
@@ -49,7 +50,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: preview-feature
-      url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/feature/${{ github.ref_name }}/
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

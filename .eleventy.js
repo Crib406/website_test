@@ -8,6 +8,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
 
+  // Pfadpräfix aus Environment lesen (z. B. "preview/feature/xyz")
+  const basePath = process.env.BASE_PATH || "";
+
   return {
     dir: {
       input: "src",
@@ -16,6 +19,7 @@ module.exports = function (eleventyConfig) {
       output: "_site"
     },
     templateFormats: ["njk", "html", "md"],
-    htmlTemplateEngine: "njk"
+    htmlTemplateEngine: "njk",
+    pathPrefix: basePath ? `/${basePath}/` : "/"
   };
 };
