@@ -1,14 +1,15 @@
-name: Preview - Feature
+name: Deploy preview (feature branches)
 
 on:
   push:
     branches:
-      - "*feature/**"
+      - "feature/**"
   workflow_dispatch:
 
 permissions:
   contents: read
-  deployments: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: preview-${{ github.ref }}
@@ -18,7 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ENV_NAME: preview-feature
+      BASE_PATH: preview/feature/${{ github.ref_name }}
 
     steps:
       - name: Checkout
@@ -29,63 +30,27 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install deps
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build Eleventy
-        run: npm run build
-
-      - name: Determine version
-        id: ver
+      - name: Build Eleventy (with base path)
         run: |
-          if [ -f package.json ]; then
-            echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
-          else
-            git fetch --tags --quiet || true
-            echo "version=$(git describe --tags --always --dirty)" >> $GITHUB_OUTPUT
-          fi
+          # Falls du in Eleventy einen basePath brauchst:
+          echo "BASE_PATH=${BASE_PATH}"
+          npx @11ty/eleventy --pathprefix "/${BASE_PATH}/"
 
-      - name: Upload preview artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload build output
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: eleventy-preview
           path: ./_site
 
-      - name: Publish deployment
-        id: deploy
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const version = `${{ steps.ver.outputs.version }}`;
-            const branch = context.ref.replace('refs/heads/', '');
-            const previewBase = process.env.PREVIEW_BASE_URL || '';
-            const previewUrl = previewBase ? `${previewBase}/${branch}` : undefined;
-
-            const { data: deployment } = await github.rest.repos.createDeployment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.ref,
-              environment: "preview-feature",
-              auto_merge: false,
-              required_contexts: [],
-              description: `Version ${version} • ${branch}`
-            });
-
-            await github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: deployment.id,
-              state: 'success',
-              environment_url: previewUrl,
-              log_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
-              description: `Version ${version} • ${branch}`
-            });
-
-      - name: Summary
-        run: |
-          {
-            echo "### Preview ready";
-            echo "- Environment: preview-feature";
-            echo "- Branch: ${{ github.ref_name }}";
-            echo "- Version: ${{ steps.ver.outputs.version }}";
-          } >> "$GITHUB_STEP_SUMMARY"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: preview-feature
+      url: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/preview/feature/${{ github.ref_name }}/
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
