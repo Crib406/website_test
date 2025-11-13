@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/images/favicon.svg?v={{ build.timestamp }}">
+    <link rel="shortcut icon" type="image/svg+xml" href="{{ site.url }}/assets/images/favicon/favicon-32x32.png?v={{ build.timestamp }}">
     <title>{{ siteseo.title }}</title>
 
     <!-- Meta -->
@@ -11,7 +11,7 @@
       <meta name="robots" content="noindex, nofollow">
     {% endif %}
     <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
-    <link rel="icon" href="/favicon.ico?v={{ build.timestamp }}" type="image/x-icon" />
+    <link rel="icon" href="{{ site.url }}/assets/images/favicon/favicon-32x32.png?v={{ build.timestamp }}" type="image/x-icon" />
 
     <!-- Cache deaktivieren -->
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
