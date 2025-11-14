@@ -8,12 +8,20 @@ eleventyExcludeFromCollections: true
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=/" />
+
+  <!-- Google soll diese Seite NICHT indexieren -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Der einzige gültige Inhalt ist die Startseite -->
   <link rel="canonical" href="/" />
-  <title>Weiterleitung auf Startseite</title>
+
+  <meta http-equiv="refresh" content="0; url=/" />
+  <title>Weiterleitung …</title>
 </head>
 <body>
   <p>Weiterleitung zur <a href="/">Startseite</a> …</p>
-  <script>window.location.replace("/");</script>
+  <script>
+    window.location.replace("/");
+  </script>
 </body>
 </html>

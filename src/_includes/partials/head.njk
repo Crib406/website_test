@@ -145,6 +145,12 @@
     }
     </script>
 
+    {% if jsonld %}
+        <script type="application/ld+json">
+            {{ jsonld | json | safe }}
+        </script>
+    {% endif %}
+
     <!-- CSS -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/vendor/fontawesome.css?v={{ build.timestamp }}">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/plugins/swiper.css?v={{ build.timestamp }}">
