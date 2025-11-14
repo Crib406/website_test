@@ -29,9 +29,16 @@ module.exports = function (eleventyConfig) {
       // Nur das Datum (YYYY-MM-DD)
       return result.slice(0, 10);
     } catch (e) {
-      // Optional zum Debuggen:
-      // console.error("lastModified error for", inputPath, e.message);
       return null;
+    }
+  });
+
+  // JSON-LD schön formatiert ausgeben
+  eleventyConfig.addFilter("json", (obj) => {
+    try {
+      return JSON.stringify(obj, null, 2); // << sauber formatiert
+    } catch (e) {
+      return "{}"; // Fallback, falls etwas völlig Unerwartetes passiert
     }
   });
 
