@@ -17,9 +17,12 @@ eleventyExcludeFromCollections: true
     {% if not page.data.eleventyExcludeFromSitemap and page.url != '/' %}
       <url>
         <loc>{{ site.url }}{{ page.url | url }}</loc>
-        {% if page.date %}
-          <lastmod>{{ page.date.toISOString().slice(0, 10) }}</lastmod>
+
+        {% set lastmod = page.inputPath | lastModified %}
+        {% if lastmod %}
+          <lastmod>{{ lastmod }}</lastmod>
         {% endif %}
+
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
       </url>
